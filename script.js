@@ -36,7 +36,7 @@ const removeItemsStorage = (textItem) => {
   const indexOfId = arrayStorage.indexOf(findItemSaved);
   arrayStorage.splice(indexOfId, 1);
   saveCartItems(arrayStorage);
-}
+};
 
 function cartItemClickListener(event) {
   const removeItem = event.target;
@@ -76,7 +76,7 @@ const saveCartInStorage = (id) => {
     arrayItems.push(id);
     saveCartItems(arrayItems);
   }
-}
+};
 
 const findSKU = () => {
   const skuItem = document.querySelector('#selected');
@@ -99,6 +99,16 @@ function initializeButtons() {
   } 
 }
 
+const receiveDataSaved = () => {
+  const arraySaved = getSavedCartItems();
+  if (arraySaved !== undefined) {
+    const arrayStorage = arraySaved.split(',');
+    arrayStorage.forEach((element) => {
+      searchSku(element);
+    });
+  }
+};
+
 const implementData = async (product) => {
   const dataAPI = await fetchProducts(product);
   const createSectionElements = document.querySelector('.items');
@@ -112,19 +122,9 @@ const implementData = async (product) => {
     createSectionElements.appendChild(sectionElements);
   });
   initializeButtons();
-};
-
-const receiveDataSaved = () => {
-  const arraySaved = getSavedCartItems();
-  const arrayStorage = arraySaved.split(',');
-  if (arrayStorage.length > 1) {
-    arrayStorage.forEach(element => {
-      searchSku(element);
-    });
-  };
+  receiveDataSaved();
 };
 
 window.onload = () => {
   implementData('computador');
-  receiveDataSaved();
 };
