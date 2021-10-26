@@ -28,9 +28,21 @@ function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
 
+const removeItemsStorage = (textItem) => {
+  const arraySaved = localStorage.getItem('cartItems');
+  const removeId = `${textItem.slice(5, 19)}`;
+  const arrayStorage = arraySaved.split(',');
+  const findItemSaved = arrayStorage.find((value) => removeId.includes(value));
+  const indexOfId = arrayStorage.indexOf(findItemSaved);
+  arrayStorage.splice(indexOfId, 1);
+  saveCartItems(arrayStorage);
+}
+
 function cartItemClickListener(event) {
   const removeItem = event.target;
   removeItem.parentNode.removeChild(removeItem);
+  const textItem = removeItem.innerText;
+  removeItemsStorage(textItem);
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -53,9 +65,23 @@ const searchSku = async (skuItem) => {
   createOlElements.appendChild(liElements);
 };
 
+const saveCartInStorage = (id) => {
+  let arrayItems = [];
+  const verifyLocalStorage = localStorage.getItem('cartItems');
+  if (!verifyLocalStorage) {
+    arrayItems.push(id);
+    saveCartItems(arrayItems);
+  } else {
+    arrayItems = verifyLocalStorage.split(',');
+    arrayItems.push(id);
+    saveCartItems(arrayItems);
+  }
+}
+
 const findSKU = () => {
   const skuItem = document.querySelector('#selected');
   const idItem = getSkuFromProductItem(skuItem);
+  saveCartInStorage(idItem);
   searchSku(idItem);
 };
 
@@ -88,6 +114,17 @@ const implementData = async (product) => {
   initializeButtons();
 };
 
+const receiveDataSaved = () => {
+  const arraySaved = getSavedCartItems();
+  const arrayStorage = arraySaved.split(',');
+  if (arrayStorage.length > 1) {
+    arrayStorage.forEach(element => {
+      searchSku(element);
+    });
+  };
+};
+
 window.onload = () => {
   implementData('computador');
+  receiveDataSaved();
 };
