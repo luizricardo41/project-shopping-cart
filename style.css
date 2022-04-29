@@ -4,11 +4,35 @@
   width: 100%;
 }
 
+.header {
+  border-radius: 50px;
+  width: 100%
+}
+
+.header h1 {
+  align-items: flex-start;
+  padding-left: 1rem;
+  margin: auto 0;
+  color: aliceblue;
+  font-family: 'Arimo', sans-serif;
+}
+
+.header header {
+  width: 100%;
+  height: 80px;
+  background-color: rgb(0, 140, 255);
+  font-size: 2rem;
+  display: flex;
+  border-radius: 50px 10px 50px 10px;
+}
+
 .items {
   display: flex;
   flex-basis: 70%;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 1rem;
+  font-family: 'Arimo', sans-serif;
 }
 
 .item {
@@ -51,7 +75,66 @@
 }
 
 .cart .cart__title {
-  flex-basis: 1;
-  font-size: 16pt;
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 50px 10px 50px 10px;
+  flex-basis: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 20px;
+  width: 95%;
+  height: 50px;
+  background-color: rgb(0, 174, 255);
+  color: aliceblue;
+  font-weight: bold;
+  font-family: 'Arimo', sans-serif;
 }
+
+.div-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.div-btn button {
+  font-family: 'Arimo', sans-serif;
+  font-weight: 500;
+}
+
+.loading {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.7;
+}
+
+.loading h2 {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.total-price {
+  padding: 0 1rem;
+  font-family: 'Arimo', sans-serif;
+}
+
+.cart__item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: rgb(0, 174, 255);
+  marker: none;
+  font-family: 'Arimo', sans-serif;
+  /* width: 80%; */
+}
+
+.cart__items {
+  padding: 0;
+}
+
