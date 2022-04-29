@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital@1&display=swap" rel="stylesheet">
     <script src="./helpers/fetchItem.js" defer></script>
     <script src="./helpers/fetchProducts.js" defer></script>
     <script src="script.js" defer></script>
@@ -14,11 +17,22 @@
   </head>
   <body>
     <section class="container">
-      <section class="items"></section>
+      <div class="header">
+        <div class="loading">
+          <h2>Carregando...</h2>
+        </div>
+        <header>
+          <h1>StoreTECH</h1>
+        </header>
+        <section class="items"></section>
+      </div>
       <section class="cart">
         <span class="cart__title">Carrinho de compras</span>
-        <button class="empty-cart">Esvaziar carrinho</button>
         <ol class="cart__items"></ol>
+        <h3 class="total-price">Total: R$ 0,00</h3>
+        <div class="div-btn">
+          <button class="empty-cart">Esvaziar carrinho</button>
+        </div>
       </section>
     </section>
   </body>
